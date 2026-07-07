@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-07-07
+### Added
+- Per-page browser tab titles (`src/hooks/useDocumentTitle.js`) — every route previously showed the same static title from `index.html`. Blog posts show the real post title.
+- `robots.txt` and a build-generated `sitemap.xml` (`scripts/generate-sitemap.js`, run via `prebuild`), covering every static route plus every real blog post slug — regenerated fresh on every build, so it can't go stale as posts are added.
+- `public/project-thumbnails/README.md` — the folder didn't exist in the repo until a real thumbnail was added, so there was nothing to see or drop a file into. Now it exists with instructions.
+### Known limitation
+- Open Graph/Twitter Card preview tags are still site-wide, not per-page: sharing a link to a specific blog post still shows the homepage's preview card, not one about that post. Social media crawlers read the static HTML as served and don't execute JavaScript, so this can't be fixed the same way as the tab title (a client-side `document.title` update) — it would need per-route static HTML (a prerender step) or a Vercel Edge Function rewriting meta tags per request. Not done here; flagged for a future iteration if it matters.
+
 ## [1.7.1] - 2026-07-07
 ### Fixed
 - Blog post said "25 years" in three places instead of the correct "28 years" used consistently everywhere else on the site (nav, footer, Home hero/bio). Checked the rest of the GitHub account (profile README, 286-builds index) for the same mistake — both already correctly say 28 years, so this was isolated to the blog post.

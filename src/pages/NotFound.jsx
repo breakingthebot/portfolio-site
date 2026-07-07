@@ -8,9 +8,12 @@
 
 import { Link } from "react-router-dom";
 
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import "./NotFound.css";
 
 function NotFound() {
+  useDocumentTitle("404 Not Found — Breaking the Bot");
+
   return (
     <section className="not-found-page">
       <h1>404</h1>

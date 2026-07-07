@@ -8,11 +8,14 @@
  */
 
 import ContactForm from "../components/ContactForm.jsx";
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import "./Contact.css";
 
 const CONTACT_EMAIL = "breakingthebot@gmail.com";
 
 function Contact() {
+  useDocumentTitle("Contact — Breaking the Bot");
+
   return (
     <section className="contact-page">
       <h1>Contact</h1>

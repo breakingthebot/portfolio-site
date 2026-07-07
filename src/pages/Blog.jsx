@@ -9,10 +9,13 @@
 import { Link } from "react-router-dom";
 
 import POSTS from "../content/posts.js";
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import { getAllPosts } from "../services/blogService.js";
 import "./Blog.css";
 
 function Blog() {
+  useDocumentTitle("Blog — Breaking the Bot");
+
   const posts = getAllPosts(POSTS);
 
   if (posts.length === 0) {

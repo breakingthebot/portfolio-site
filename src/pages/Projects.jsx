@@ -10,9 +10,12 @@ import { useEffect, useState } from "react";
 
 import { fetchHighlightedBuilds } from "../services/buildsService.js";
 import ProjectCard from "../components/ProjectCard.jsx";
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import "./Projects.css";
 
 function Projects() {
+  useDocumentTitle("Projects — Breaking the Bot");
+
   const [status, setStatus] = useState("loading");
   const [builds, setBuilds] = useState([]);
 

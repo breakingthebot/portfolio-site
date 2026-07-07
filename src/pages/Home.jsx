@@ -11,9 +11,12 @@ import Avatar from "../components/Avatar.jsx";
 import GithubActivity from "../components/GithubActivity.jsx";
 import ResumeLink from "../components/ResumeLink.jsx";
 import TechStack from "../components/TechStack.jsx";
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import "./Home.css";
 
 function Home() {
+  useDocumentTitle("Breaking the Bot — Portfolio");
+
   return (
     <section className="home-hero">
       <Avatar />

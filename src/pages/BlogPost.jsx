@@ -8,12 +8,15 @@
 import { Link, useParams } from "react-router-dom";
 
 import POSTS from "../content/posts.js";
+import { useDocumentTitle } from "../hooks/useDocumentTitle.js";
 import { getPostBySlug } from "../services/blogService.js";
 import "./BlogPost.css";
 
 function BlogPost() {
   const { slug } = useParams();
   const post = getPostBySlug(slug, POSTS);
+
+  useDocumentTitle(post ? `${post.title} — Breaking the Bot` : "Post Not Found — Breaking the Bot");
 
   if (!post) {
     return (
