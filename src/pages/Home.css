@@ -19,10 +19,15 @@
 .home-bio {
   color: var(--text-muted);
   line-height: 1.6;
+  /* Long-form body text reads better left-aligned, even inside an
+     otherwise-centered hero -- centered paragraphs make the eye hunt for
+     the start of each line. */
+  text-align: left;
 }
 
 .home-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
   margin-top: 1.5rem;
@@ -45,4 +50,14 @@
 .home-action-secondary {
   border: 1px solid var(--border);
   color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .home-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .home-tagline {
+    font-size: 1rem;
+  }
 }

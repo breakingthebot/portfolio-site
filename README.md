@@ -45,6 +45,14 @@ The form also includes a honeypot field (`_gotcha`, Formspree's own convention) 
 
 `ResumeLink` (`src/components/ResumeLink.jsx`) shows a "Download Resume" button on Home only once a real `resume.pdf` exists in `public/` — never a dead link. This can't just check `fetch().ok`: `vercel.json` rewrites every unmatched path to `index.html`, so a *missing* `resume.pdf` still returns 200, just with `Content-Type: text/html` instead of `application/pdf`. `isResumeAvailable()` (`src/services/resumeService.js`) checks the actual content type, not just the status code — confirmed the bug existed by testing against a real missing file first (200/text-html), then confirmed the fix with a real file (200/application-pdf), before shipping. To activate the button, drop a real `resume.pdf` into `public/`.
 
+### Mobile/layout fixes
+Two real layout bugs, found by screenshotting the live site at mobile width with Playwright (no browser tool available otherwise, so this was set up ad hoc for verification — not a project dependency):
+
+1. **Nav wrap** — `.nav-links` had no `flex-wrap`, so on narrow screens the brand name wrapped mid-text and crowded against the nav links instead of the link row dropping cleanly below the brand. Fixed with `flex-wrap: wrap` + `row-gap` on `.nav-bar`/`.nav-links`, plus a `max-width: 400px` breakpoint that puts the brand on its own line below ~400px.
+2. **`.nav-bar` and `.site-footer` were shrink-wrapping to content width instead of filling their `max-width: 960px`** — both are direct flex children of `.app-shell` (a column flex container), and `margin: 0 auto` on a flex item suppresses the default `align-items: stretch` behavior, so without an explicit `width: 100%` they sized to content (measured 424px instead of 960px) instead of stretching up to the cap. This made the footer's divider line visibly shorter than the page content above it. Fixed by adding `width: 100%` alongside `max-width` on both.
+
+Also left-aligned the Home bio paragraph (long-form text reads better left-aligned than centered) and added a `max-width: 480px` breakpoint scaling down the H1/tagline font sizes so the hero doesn't dominate small screens.
+
 ## Notes
 - Blog page content is still an intentional empty state (no fake posts).
 - No resume is uploaded yet — drop `resume.pdf` into `public/` to activate the Home page download button.

@@ -1,4 +1,9 @@
 .site-footer {
+  /* width:100% required -- see the comment in NavBar.css for why a flex
+     item with margin:0 auto needs an explicit width instead of relying on
+     stretch. Without it the border-top line above the copyright text was
+     only as wide as the text itself, not the full page. */
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem;

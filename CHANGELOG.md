@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-07-07
+### Fixed
+- Nav links now wrap cleanly onto their own line below the brand on narrow screens, instead of the brand text wrapping mid-word and crowding the links.
+- `.nav-bar` and `.site-footer` now correctly fill their `max-width: 960px` instead of shrink-wrapping to content width — both are flex children of a column flex container, and `margin: 0 auto` without an explicit `width` suppresses the default stretch behavior. Confirmed via Playwright bounding-box measurements (424px before, 960px after) and screenshots at 320px/375px/1280px plus dark mode.
+- Home bio paragraph is now left-aligned instead of centered, for readability.
+- Hero heading/tagline scale down below 480px so they don't dominate small screens.
+
 ## [0.8.0] - 2026-07-07
 ### Added
 - "Download Resume" link on Home (`src/components/ResumeLink.jsx`), shown only once a real `resume.pdf` exists in `public/` — never a dead link.

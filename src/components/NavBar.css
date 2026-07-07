@@ -2,7 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 0.6rem;
   padding: 1.25rem 1.5rem;
+  /* width:100% is required here, not just max-width: .nav-bar is a flex
+     item of .app-shell (a column flex container), and margin:0 auto on a
+     flex item suppresses the default stretch behavior, so without an
+     explicit width it shrink-wraps to content instead of filling up to
+     max-width. Confirmed via Playwright: was rendering at 424px instead
+     of the intended up-to-960px. */
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
 }
@@ -12,14 +21,29 @@
   font-size: 1.1rem;
   color: var(--text);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* Below ~380px the brand name plus all 4 links can't fit on one row even
+   after wrapping to two flex lines. Drop the brand to its own full-width
+   line so it never wraps mid-word against the nav links. */
+@media (max-width: 400px) {
+  .nav-bar {
+    justify-content: flex-start;
+  }
+
+  .nav-brand {
+    flex-basis: 100%;
+  }
 }
 
 .nav-link {
