@@ -12,8 +12,8 @@ import "./Home.css";
 function Home() {
   return (
     <section className="home-hero">
-      <h1>Hi, I'm Your Name.</h1>
-      <p className="home-tagline">Add your one-line tagline here — what you build and who you build it for.</p>
+      <h1>Hi, I'm Breaking the Bot.</h1>
+      <p className="home-tagline">28 years in operations and automation — now learning AI in public, one build at a time.</p>
       <p className="home-bio">
         Add your bio here. A couple of sentences about your background, what you're currently working on, and
         what you're looking for.

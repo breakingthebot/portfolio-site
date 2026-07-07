@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-07-07
+### Changed
+- Replaced "Your Name" placeholder with "Breaking the Bot" across the nav, footer, page title, and Home page.
+- Added a real tagline on Home, based on the bio in the `breakingthebot/breakingthebot` GitHub profile README.
+
 ## [0.4.0] - 2026-07-07
 ### Added
 - Honeypot spam protection on the contact form (`_gotcha` field, Formspree's convention): hidden off-screen via CSS so real users never see it, but bots that blindly fill every field get caught. Triggering it shows the normal success message without an actual network request, so bots get no signal they were caught.

@@ -20,7 +20,7 @@ function NavBar() {
   return (
     <header className="nav-bar">
       <NavLink to="/" className="nav-brand" end>
-        Your Name
+        Breaking the Bot
       </NavLink>
       <nav>
         <ul className="nav-links">
