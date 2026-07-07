@@ -27,7 +27,7 @@ None required for the site to run. See `.env.example`:
 - `npm run preview` — serve the production build locally.
 
 ## Deployed
-Not deployed yet — planned for Vercel (`vercel` for preview, `vercel --prod` for production) in an upcoming iteration, since Vercel handles client-side route fallbacks correctly out of the box.
+Live at [portfolio-site-three-blush-83.vercel.app](https://portfolio-site-three-blush-83.vercel.app). Deployed via `vercel` CLI (not the dashboard) with `vercel.json` set to rewrite every path to `index.html`, so client-side routes like `/projects` work correctly on direct navigation and refresh — GitHub Pages can't do this without extra configuration, which is why this went to Vercel instead. The GitHub repo is connected for automatic redeploys on push to `main`.
 
 ## Architecture Notes
 Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Content is currently placeholder copy (name, bio, email) — swap it in whenever, the structure and routing are real and working.

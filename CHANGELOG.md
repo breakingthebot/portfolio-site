@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-07
+### Added
+- GitHub Actions CI: `npm ci`, `npm test`, `npm run build` on every push/PR to `main`. Test badge in README.
+- Deployed to Vercel via CLI at https://portfolio-site-three-blush-83.vercel.app, with `vercel.json` rewriting all paths to `index.html` for correct client-side route fallback. GitHub repo connected for automatic redeploys on push.
+
 ## [0.2.0] - 2026-07-07
 ### Added
 - Real contact form (name/email/message) submitting to a configurable Formspree endpoint (`VITE_CONTACT_FORM_ENDPOINT`), with client-side validation and loading/success/error states.
