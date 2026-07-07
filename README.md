@@ -14,7 +14,9 @@ Personal portfolio site — home, projects, blog, and contact pages with client-
 3. `npm install`
 
 ## Environment Variables
-None required for standard defaults. See `.env.example` — `VITE_BUILDS_DATA_URL` can optionally override where the Projects page fetches build data from (defaults to the live 286-builds index).
+None required for the site to run. See `.env.example`:
+- `VITE_BUILDS_DATA_URL` — optionally overrides where the Projects page fetches build data from (defaults to the live 286-builds index).
+- `VITE_CONTACT_FORM_ENDPOINT` — your Formspree form endpoint (e.g. `https://formspree.io/f/xxxxxxxx`), free at [formspree.io](https://formspree.io). Until this is set, the Contact page shows a "not configured" notice and relies on the `mailto:` link instead of a broken-looking form.
 
 ## Running Locally
 - `npm run dev` — start the dev server (prints a local URL).
@@ -30,7 +32,9 @@ Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout vi
 
 The Projects page is the one page with real logic: `src/services/buildsService.js` fetches the live `builds.json` from the [286-builds index](https://breakingthebot.github.io/286-builds/) and selects the most recent entries via a pure `selectHighlightedBuilds()` function, kept separate from the fetch call so it can be unit tested without mocking `fetch`. The page also always links out to the full searchable index rather than trying to duplicate its search/filter functionality here.
 
-Blog is an intentional empty state for now — no fake posts. Contact uses a `mailto:` link rather than a form, since there's no backend yet to receive submissions; a real form (e.g. via Formspree) is a natural next iteration.
+Blog is an intentional empty state for now — no fake posts.
+
+Contact now has a real form (`src/components/ContactForm.jsx`) submitting to Formspree, with client-side validation split into a pure `validateContactForm()` function (`src/services/contactFormValidation.js`) so field rules are unit-tested without rendering anything. Submission itself lives in `src/services/contactFormService.js`, which also exposes `isContactFormConfigured()` — if `VITE_CONTACT_FORM_ENDPOINT` isn't set, the page shows a clear notice and leans on the `mailto:`/GitHub links instead of rendering a form that would silently fail.
 
 ## Notes
 - All bio/name/email content is placeholder text, clearly marked, ready to swap in.

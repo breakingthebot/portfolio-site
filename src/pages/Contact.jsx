@@ -1,11 +1,13 @@
 /*
  * src/pages/Contact.jsx
- * Contact page. Uses a mailto: link for now since there's no backend yet
- * (a real form via a service like Formspree is a good next iteration).
- * Connects to: src/App.jsx
+ * Contact page. The form below is the primary way to reach out; the
+ * mailto: link and GitHub link are always-working fallbacks in case the
+ * form isn't configured yet or its submission fails.
+ * Connects to: src/App.jsx, src/components/ContactForm.jsx
  * Created: 2026-07-06
  */
 
+import ContactForm from "../components/ContactForm.jsx";
 import "./Contact.css";
 
 const CONTACT_EMAIL = "your.email@example.com";
@@ -14,7 +16,7 @@ function Contact() {
   return (
     <section className="contact-page">
       <h1>Contact</h1>
-      <p className="contact-intro">The best way to reach me is by email.</p>
+      <p className="contact-intro">Use the form below, or reach me directly:</p>
       <a className="contact-email" href={`mailto:${CONTACT_EMAIL}`}>
         {CONTACT_EMAIL}
       </a>
@@ -25,6 +27,7 @@ function Contact() {
           </a>
         </li>
       </ul>
+      <ContactForm />
     </section>
   );
 }
