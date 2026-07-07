@@ -1,0 +1,24 @@
+.blog-post-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.blog-post-back {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.blog-post-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0.25rem 0 1.5rem;
+}
+
+.blog-post-page p {
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}

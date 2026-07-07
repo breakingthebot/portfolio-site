@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-07-07
+### Added
+- First real blog post: "This Isn't New — It's Just the First Time I'm Logging It" (`src/content/posts.js`), on why this project exists.
+- Blog now renders real posts instead of only the empty state: a list view (`Blog.jsx`) and a per-post detail view (`BlogPost.jsx`, new route `/blog/:slug`).
+- `src/services/blogService.js` — pure `getAllPosts()` (sorts newest first) and `getPostBySlug()`, unit tested independently of real post content.
+
 ## [1.0.0] - 2026-07-07
 ### Added
 - Light/dark theme toggle (`src/components/ThemeToggle.jsx`) in the nav, backed by pure logic in `src/services/themeService.js` (flip/resolve/persist), fully unit tested with a mock storage object.

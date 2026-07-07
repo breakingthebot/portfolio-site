@@ -37,7 +37,7 @@ Four pages (Home, Projects, Blog, Contact) plus a catch-all 404 page share one `
 
 The Projects page is the one page with real logic: `src/services/buildsService.js` fetches the live `builds.json` from the [286-builds index](https://breakingthebot.github.io/286-builds/) and selects the most recent entries via a pure `selectHighlightedBuilds()` function, kept separate from the fetch call so it can be unit tested without mocking `fetch`. The page also always links out to the full searchable index rather than trying to duplicate its search/filter functionality here.
 
-Blog is an intentional empty state for now — no fake posts.
+Blog (`src/pages/Blog.jsx`) lists posts newest-first and links to a per-post detail page (`src/pages/BlogPost.jsx`, route `/blog/:slug`). Posts are plain data in `src/content/posts.js` (title, date, excerpt, body as an array of paragraphs) — adding a new post never touches component code. Sorting and slug lookup live in pure functions in `src/services/blogService.js`, unit tested against fake post data so the tests don't depend on real content changing. The list still falls back to the original empty state if `posts.js` is ever empty.
 
 Contact now has a real form (`src/components/ContactForm.jsx`) submitting to Formspree, with client-side validation split into a pure `validateContactForm()` function (`src/services/contactFormValidation.js`) so field rules are unit-tested without rendering anything. Submission itself lives in `src/services/contactFormService.js`, which also exposes `isContactFormConfigured()` — if `VITE_CONTACT_FORM_ENDPOINT` isn't set, the page shows a clear notice and leans on the `mailto:`/GitHub links instead of rendering a form that would silently fail.
 
@@ -61,7 +61,6 @@ The tricky part of any manual theme toggle is avoiding a flash of the wrong them
 Verified with Playwright screenshots: initial OS-default light render, click-to-dark, and dark-still-applied-after-reload.
 
 ## Notes
-- Blog page content is still an intentional empty state (no fake posts).
 - No resume is uploaded yet — drop `resume.pdf` into `public/` to activate the Home page download button.
 - `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.
 - The favicon and Open Graph/Twitter share image (`public/favicon.svg`, `public/og-image.svg`) are SVG. Most modern platforms (Discord, Slack, iMessage, Facebook) render SVG `og:image` fine, but some stricter validators (older Twitter Card validator, some LinkedIn crawlers) prefer raster PNG/JPG — worth upgrading to a designed PNG if you hit a platform that shows a blank preview.
