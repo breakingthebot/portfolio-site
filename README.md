@@ -28,7 +28,7 @@ None required for the site to run. See `.env.example`:
 - `npm run preview` — serve the production build locally.
 
 ## Deployed
-Live at [portfolio-site-three-blush-83.vercel.app](https://portfolio-site-three-blush-83.vercel.app). Deployed via `vercel` CLI (not the dashboard) with `vercel.json` set to rewrite every path to `index.html`, so client-side routes like `/projects` work correctly on direct navigation and refresh — GitHub Pages can't do this without extra configuration, which is why this went to Vercel instead. The GitHub repo is connected for automatic redeploys on push to `main`.
+Live at [breakingthebot-portfolio-site.vercel.app](https://breakingthebot-portfolio-site.vercel.app). Deployed via `vercel` CLI (not the dashboard) with `vercel.json` set to rewrite every path to `index.html`, so client-side routes like `/projects` work correctly on direct navigation and refresh — GitHub Pages can't do this without extra configuration, which is why this went to Vercel instead. The GitHub repo is connected for automatic redeploys on push to `main`.
 
 The contact form is fully wired up in production — `VITE_CONTACT_FORM_ENDPOINT` is set in Vercel and verified with a real end-to-end submission to Formspree.
 
