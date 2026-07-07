@@ -5,6 +5,13 @@
  * Created: 2026-07-06
  */
 
+/* --on-accent and --error are split out per theme rather than hardcoded
+   in components: white text on the dark theme's lighter --accent
+   (#60a5fa) measures 2.54:1, well under WCAG AA's 4.5:1 minimum, and the
+   same #dc2626 error red measures 3.88:1 against the dark theme's --bg.
+   Both were confirmed as real failures by computing actual contrast
+   ratios, not eyeballing them, then fixed with values that pass (7.36:1
+   and 6.77:1 respectively). */
 :root {
   color-scheme: light dark;
   --bg: #ffffff;
@@ -13,6 +20,8 @@
   --text-muted: #475569;
   --border: #e2e8f0;
   --accent: #2563eb;
+  --on-accent: #ffffff;
+  --error: #dc2626;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +32,8 @@
     --text-muted: #94a3b8;
     --border: #263449;
     --accent: #60a5fa;
+    --on-accent: #0b1220;
+    --error: #f87171;
   }
 }
 
@@ -37,6 +48,8 @@
   --text-muted: #475569;
   --border: #e2e8f0;
   --accent: #2563eb;
+  --on-accent: #ffffff;
+  --error: #dc2626;
 }
 
 :root[data-theme="dark"] {
@@ -47,6 +60,8 @@
   --text-muted: #94a3b8;
   --border: #263449;
   --accent: #60a5fa;
+  --on-accent: #0b1220;
+  --error: #f87171;
 }
 
 * {
@@ -75,6 +90,33 @@ h1 {
   font-size: 2rem;
   line-height: 1.2;
   margin: 0 0 1rem;
+}
+
+/* Off-screen until keyboard-focused, so sighted mouse users never see it
+   but keyboard users can jump straight past the repeated nav links on
+   every page instead of tabbing through them each time. */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
 }
 
 .app-shell {

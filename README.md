@@ -68,6 +68,11 @@ The tricky part of any manual theme toggle is avoiding a flash of the wrong them
 
 Verified with Playwright screenshots: initial OS-default light render, click-to-dark, and dark-still-applied-after-reload.
 
+### Accessibility pass
+Driven by actually computing WCAG contrast ratios rather than eyeballing colors — two real failures turned up, both dark-theme-only: white button/avatar text on the dark theme's lighter `--accent` (`#60a5fa`) measured 2.54:1 against a 4.5:1 minimum, and the shared error-red measured 3.88:1 against the dark background. Fixed with theme-aware `--on-accent` and `--error` CSS variables (now 7.36:1 and 6.77:1) instead of the hardcoded `#ffffff`/`#dc2626` that were baked into several components.
+
+Also fixed while auditing: `ProjectCard` titles were `<h3>` directly under each page's `<h1>` with no `<h2>` in between (a heading-hierarchy skip); added a skip-to-main-content link that's invisible until keyboard-focused; contact form fields now set `aria-invalid`/`aria-describedby` on error so screen readers announce the problem when the field is focused, not just show red text; and the GitHub activity grid's 91 unlabeled day cells are `aria-hidden` since the label above already says what it is.
+
 ## Notes
 - No resume is uploaded yet — drop `resume.pdf` into `public/` to activate the Home page download button.
 - No project thumbnails are uploaded yet — drop `{build_number}.jpg` into `public/project-thumbnails/` (e.g. `public/project-thumbnails/25.jpg`) to activate a real thumbnail on that build's card; every card without one shows a placeholder.

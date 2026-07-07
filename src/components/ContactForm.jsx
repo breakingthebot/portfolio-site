@@ -85,20 +85,53 @@ function ContactForm() {
 
       <label className="contact-form-field">
         Name
-        <input type="text" name="name" value={fields.name} onChange={handleChange} />
-        {fieldErrors.name && <span className="contact-form-error">{fieldErrors.name}</span>}
+        <input
+          type="text"
+          name="name"
+          value={fields.name}
+          onChange={handleChange}
+          aria-invalid={Boolean(fieldErrors.name)}
+          aria-describedby={fieldErrors.name ? "name-error" : undefined}
+        />
+        {fieldErrors.name && (
+          <span className="contact-form-error" id="name-error">
+            {fieldErrors.name}
+          </span>
+        )}
       </label>
 
       <label className="contact-form-field">
         Email
-        <input type="email" name="email" value={fields.email} onChange={handleChange} />
-        {fieldErrors.email && <span className="contact-form-error">{fieldErrors.email}</span>}
+        <input
+          type="email"
+          name="email"
+          value={fields.email}
+          onChange={handleChange}
+          aria-invalid={Boolean(fieldErrors.email)}
+          aria-describedby={fieldErrors.email ? "email-error" : undefined}
+        />
+        {fieldErrors.email && (
+          <span className="contact-form-error" id="email-error">
+            {fieldErrors.email}
+          </span>
+        )}
       </label>
 
       <label className="contact-form-field">
         Message
-        <textarea name="message" rows="5" value={fields.message} onChange={handleChange} />
-        {fieldErrors.message && <span className="contact-form-error">{fieldErrors.message}</span>}
+        <textarea
+          name="message"
+          rows="5"
+          value={fields.message}
+          onChange={handleChange}
+          aria-invalid={Boolean(fieldErrors.message)}
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+        />
+        {fieldErrors.message && (
+          <span className="contact-form-error" id="message-error">
+            {fieldErrors.message}
+          </span>
+        )}
       </label>
 
       {status === "error" && (

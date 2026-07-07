@@ -45,7 +45,12 @@ function GithubActivity() {
   return (
     <div className="github-activity">
       <p className="github-activity-label">Recent GitHub activity (last ~90 days)</p>
-      <div className="github-activity-grid">
+      {/* aria-hidden: 91 individually-unlabeled day cells would clutter
+          screen reader navigation without adding anything the label above
+          doesn't already convey; the per-day detail (via title) is a
+          hover-only bonus for sighted mouse users, not the primary way
+          this information is consumed. */}
+      <div className="github-activity-grid" aria-hidden="true">
         {weeks.map((week, weekIndex) => (
           <div className="github-activity-week" key={weekIndex}>
             {week.map((day) => (

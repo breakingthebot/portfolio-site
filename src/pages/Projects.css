@@ -19,7 +19,7 @@
 }
 
 .projects-status-error {
-  color: #dc2626;
+  color: var(--error);
 }
 
 .projects-grid {

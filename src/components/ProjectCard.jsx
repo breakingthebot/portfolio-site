@@ -12,11 +12,11 @@ function ProjectCard({ build }) {
   return (
     <article className="project-card">
       <ProjectThumbnail buildNumber={build.build_number} projectName={build.project_name} />
-      <h3>
+      <h2>
         <a href={build.repo_url} target="_blank" rel="noopener noreferrer">
           {build.project_name}
         </a>
-      </h3>
+      </h2>
       <p className="project-card-tags">
         <span className="project-card-tag project-card-tag-tech">{build.technology}</span>
         <span className="project-card-tag project-card-tag-category">{build.category}</span>

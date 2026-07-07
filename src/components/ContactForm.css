@@ -44,7 +44,7 @@
 }
 
 .contact-form-error {
-  color: #dc2626;
+  color: var(--error);
   font-size: 0.8rem;
 }
 
@@ -58,7 +58,7 @@
   border: none;
   border-radius: 0.5rem;
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;

@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-07-07
+### Fixed
+- Accessibility pass, driven by computed WCAG contrast ratios rather than eyeballing: dark-theme buttons/avatar had white text on the lighter accent blue (2.54:1, needs 4.5:1) and form error text was too dim against the dark background (3.88:1). Added theme-aware `--on-accent`/`--error` CSS variables (both now pass at 7.36:1 and 6.77:1) and swapped every hardcoded `#ffffff`/`#dc2626` usage to reference them.
+- Fixed a heading hierarchy skip: `ProjectCard` titles were `<h3>` directly under each page's `<h1>`, with no `<h2>` in between. Changed to `<h2>`.
+- Added a skip-to-main-content link, visible only on keyboard focus, so keyboard users can bypass the repeated nav on every page.
+- Contact form fields now set `aria-invalid`/`aria-describedby` when they have a validation error, so screen readers announce the error when the field is focused instead of silently showing red text sighted users have to notice.
+- The GitHub activity grid's 91 individually-unlabeled day cells are now `aria-hidden`, since the label above already conveys the same information and the per-cell tooltip is a sighted-mouse-user bonus, not the primary way the widget is meant to be read.
+
 ## [1.6.0] - 2026-07-07
 ### Changed
 - Replaced the third-party GitHub contribution chart (iteration 20) with a first-party recent-activity widget (`src/components/GithubActivity.jsx`) built from GitHub's own public events API. The old service was several+ days stale and, as a plain `<img>`, couldn't support hover tooltips. The new widget fetches live and shows a real per-day count on hover.
