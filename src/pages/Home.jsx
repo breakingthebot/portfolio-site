@@ -8,7 +8,7 @@
 import { Link } from "react-router-dom";
 
 import Avatar from "../components/Avatar.jsx";
-import GithubChart from "../components/GithubChart.jsx";
+import GithubActivity from "../components/GithubActivity.jsx";
 import ResumeLink from "../components/ResumeLink.jsx";
 import TechStack from "../components/TechStack.jsx";
 import "./Home.css";
@@ -35,7 +35,7 @@ function Home() {
         </Link>
         <ResumeLink />
       </div>
-      <GithubChart />
+      <GithubActivity />
     </section>
   );
 }

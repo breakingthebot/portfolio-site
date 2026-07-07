@@ -1,0 +1,49 @@
+.github-activity {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.github-activity-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 0 0 0.5rem;
+}
+
+.github-activity-grid {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.github-activity-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.github-activity-day {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+/* Fixed brand-blue shades rather than GitHub's green, and rather than
+   var(--accent) -- a 4-step progression needs more distinct stops than
+   the theme exposes, and fixed hex reads consistently in both themes. */
+.github-activity-level-1 {
+  background: #bfdbfe;
+}
+
+.github-activity-level-2 {
+  background: #60a5fa;
+}
+
+.github-activity-level-3 {
+  background: #2563eb;
+}
+
+.github-activity-level-4 {
+  background: #1e40af;
+}

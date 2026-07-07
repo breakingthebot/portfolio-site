@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-07-07
+### Changed
+- Replaced the third-party GitHub contribution chart (iteration 20) with a first-party recent-activity widget (`src/components/GithubActivity.jsx`) built from GitHub's own public events API. The old service was several+ days stale and, as a plain `<img>`, couldn't support hover tooltips. The new widget fetches live and shows a real per-day count on hover.
+### Fixed
+- The events API's `PushEvent` payload doesn't include a commit count (confirmed against the live API), so the widget counts and labels **pushes**, not commits, rather than showing an inaccurate number.
+
 ## [1.5.0] - 2026-07-07
 ### Added
 - Tech-stack badge row on Home (`src/components/TechStack.jsx`), a curated list of languages/tools used across the 286-builds series (`src/content/techStack.js`).
