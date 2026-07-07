@@ -1,5 +1,7 @@
 # Portfolio Site
 
+[![Test](https://github.com/breakingthebot/portfolio-site/actions/workflows/test.yml/badge.svg)](https://github.com/breakingthebot/portfolio-site/actions/workflows/test.yml)
+
 Personal portfolio site — home, projects, blog, and contact pages with client-side routing.
 
 ## Stack
