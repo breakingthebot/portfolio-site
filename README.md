@@ -32,7 +32,7 @@ Live at [portfolio-site-three-blush-83.vercel.app](https://portfolio-site-three-
 The contact form is fully wired up in production — `VITE_CONTACT_FORM_ENDPOINT` is set in Vercel and verified with a real end-to-end submission to Formspree.
 
 ## Architecture Notes
-Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Name, tagline, bio, and contact email are real content now (sourced from the `breakingthebot/breakingthebot` GitHub profile README).
+Four pages (Home, Projects, Blog, Contact) plus a catch-all 404 page share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Name, tagline, bio, and contact email are real content now (sourced from the `breakingthebot/breakingthebot` GitHub profile README).
 
 The Projects page is the one page with real logic: `src/services/buildsService.js` fetches the live `builds.json` from the [286-builds index](https://breakingthebot.github.io/286-builds/) and selects the most recent entries via a pure `selectHighlightedBuilds()` function, kept separate from the fetch call so it can be unit tested without mocking `fetch`. The page also always links out to the full searchable index rather than trying to duplicate its search/filter functionality here.
 

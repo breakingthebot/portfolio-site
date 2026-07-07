@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-07-07
+### Added
+- Custom 404 page (`src/pages/NotFound.jsx`) with a catch-all `*` route, so unmatched paths show a real message instead of rendering blank under the nav/footer.
+
 ## [0.5.0] - 2026-07-07
 ### Added
 - Favicon (`public/favicon.svg`) and Open Graph/Twitter Card meta tags for proper link previews when shared.
