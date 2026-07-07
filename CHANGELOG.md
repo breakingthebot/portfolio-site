@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.7.1] - 2026-07-07
+### Fixed
+- Blog post said "25 years" in three places instead of the correct "28 years" used consistently everywhere else on the site (nav, footer, Home hero/bio). Checked the rest of the GitHub account (profile README, 286-builds index) for the same mistake — both already correctly say 28 years, so this was isolated to the blog post.
+
 ## [1.7.0] - 2026-07-07
 ### Fixed
 - Accessibility pass, driven by computed WCAG contrast ratios rather than eyeballing: dark-theme buttons/avatar had white text on the lighter accent blue (2.54:1, needs 4.5:1) and form error text was too dim against the dark background (3.88:1). Added theme-aware `--on-accent`/`--error` CSS variables (both now pass at 7.36:1 and 6.77:1) and swapped every hardcoded `#ffffff`/`#dc2626` usage to reference them.
