@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-07-07
+### Fixed
+- Normalized `h1` spacing across pages: `Projects`, `Blog`, and `Contact` previously had no heading CSS at all and fell through to the browser's UA-default margin, which stacked with each page's own container padding for an inconsistent gap above the title. Added a baseline `h1` rule in `global.css`; `Home`'s hero and `NotFound`'s "404" keep their own deliberate overrides.
+
 ## [1.1.0] - 2026-07-07
 ### Added
 - First real blog post: "This Isn't New — It's Just the First Time I'm Logging It" (`src/content/posts.js`), on why this project exists.

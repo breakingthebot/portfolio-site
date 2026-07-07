@@ -65,6 +65,18 @@ a {
   color: inherit;
 }
 
+/* Baseline h1 so pages that don't set their own size/spacing (Projects,
+   Blog, Contact) don't fall through to the browser's UA-default margin
+   (0.67em top and bottom) -- that stacked with each page's own container
+   padding for an undesigned, inconsistent gap above the heading. Pages
+   with a deliberate look (Home's hero, NotFound's "404") override this
+   with their own selectors, which win on specificity. */
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
 .app-shell {
   min-height: 100vh;
   display: flex;

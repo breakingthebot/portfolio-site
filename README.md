@@ -53,6 +53,8 @@ Two real layout bugs, found by screenshotting the live site at mobile width with
 
 Also left-aligned the Home bio paragraph (long-form text reads better left-aligned than centered) and added a `max-width: 480px` breakpoint scaling down the H1/tagline font sizes so the hero doesn't dominate small screens.
 
+A later pass normalized `h1` spacing: `Projects`, `Blog`, and `Contact` had no heading CSS at all and fell through to the browser's UA-default margin, which stacked with each page's own container padding for an inconsistent, undesigned gap above the title. `global.css` now sets a baseline `h1` rule (`margin: 0 0 1rem`); `Home`'s hero and `NotFound`'s "404" keep their own deliberate overrides, which win on specificity.
+
 ### Light/dark theme toggle
 The site defaults to the OS `prefers-color-scheme`, but a button in the nav (`ThemeToggle`) lets visitors manually override it. The override is stored in `localStorage` and takes priority over the OS setting on every future visit. All the flip/resolve/persist logic lives in pure functions in `src/services/themeService.js` so it's unit tested against a mock storage object rather than the real browser API.
 
