@@ -7,12 +7,14 @@
 
 import { Link } from "react-router-dom";
 
+import Avatar from "../components/Avatar.jsx";
 import ResumeLink from "../components/ResumeLink.jsx";
 import "./Home.css";
 
 function Home() {
   return (
     <section className="home-hero">
+      <Avatar />
       <h1>Hi, I'm Breaking the Bot.</h1>
       <p className="home-tagline">28 years in operations and automation — now learning AI in public, one build at a time.</p>
       <p className="home-bio">

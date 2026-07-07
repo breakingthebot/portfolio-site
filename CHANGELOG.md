@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-07-07
+### Added
+- "BB" avatar monogram (`src/components/Avatar.jsx`) in the Home hero, first step in a "deck this out" visual pass. CSS-driven (not a static image), so it follows the light/dark theme automatically like everything else.
+
 ## [1.2.0] - 2026-07-07
 ### Changed
 - Project cards on the Projects page now show technology and category as visually distinct pill tags instead of a single muted "Tech · Category" text line, making the variety across builds easier to scan at a glance.
