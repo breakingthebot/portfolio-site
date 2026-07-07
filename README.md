@@ -18,7 +18,7 @@ Personal portfolio site — home, projects, blog, and contact pages with client-
 ## Environment Variables
 None required for the site to run. See `.env.example`:
 - `VITE_BUILDS_DATA_URL` — optionally overrides where the Projects page fetches build data from (defaults to the live 286-builds index).
-- `VITE_CONTACT_FORM_ENDPOINT` — your Formspree form endpoint (e.g. `https://formspree.io/f/xxxxxxxx`), free at [formspree.io](https://formspree.io). Until this is set, the Contact page shows a "not configured" notice and relies on the `mailto:` link instead of a broken-looking form.
+- `VITE_CONTACT_FORM_ENDPOINT` — your Formspree form endpoint (e.g. `https://formspree.io/f/xxxxxxxx`), free at [formspree.io](https://formspree.io). Until this is set, the Contact page shows a "not configured" notice and relies on the `mailto:` link instead of a broken-looking form. Set in production via `vercel env add VITE_CONTACT_FORM_ENDPOINT production --value "https://formspree.io/f/xxxxxxxx"`, then redeploy (`vercel --prod`) — Vite bakes `VITE_` vars in at build time, so existing deployments won't pick up a new value without a rebuild.
 
 ## Running Locally
 - `npm run dev` — start the dev server (prints a local URL).
@@ -28,6 +28,8 @@ None required for the site to run. See `.env.example`:
 
 ## Deployed
 Live at [portfolio-site-three-blush-83.vercel.app](https://portfolio-site-three-blush-83.vercel.app). Deployed via `vercel` CLI (not the dashboard) with `vercel.json` set to rewrite every path to `index.html`, so client-side routes like `/projects` work correctly on direct navigation and refresh — GitHub Pages can't do this without extra configuration, which is why this went to Vercel instead. The GitHub repo is connected for automatic redeploys on push to `main`.
+
+The contact form is fully wired up in production — `VITE_CONTACT_FORM_ENDPOINT` is set in Vercel and verified with a real end-to-end submission to Formspree.
 
 ## Architecture Notes
 Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Name, tagline, bio, and contact email are real content now (sourced from the `breakingthebot/breakingthebot` GitHub profile README).
