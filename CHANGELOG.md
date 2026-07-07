@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-07-07
+### Added
+- Vercel Web Analytics (`@vercel/analytics`), enabled via `vercel project web-analytics portfolio-site` and wired into `main.jsx`. Free tier, no cookie banner required.
+
 ## [0.6.0] - 2026-07-07
 ### Added
 - Custom 404 page (`src/pages/NotFound.jsx`) with a catch-all `*` route, so unmatched paths show a real message instead of rendering blank under the nav/footer.

@@ -9,6 +9,7 @@ Personal portfolio site — home, projects, blog, and contact pages with client-
 - Vite (dev server + build)
 - Vitest (unit tests)
 - Plain CSS (no framework, no CSS-in-JS)
+- Vercel Web Analytics (`@vercel/analytics`) — free tier, no cookie banner needed
 
 ## Setup
 1. Install Node.js 22 or newer.
