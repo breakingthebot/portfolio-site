@@ -8,7 +8,9 @@
 import { Link } from "react-router-dom";
 
 import Avatar from "../components/Avatar.jsx";
+import GithubChart from "../components/GithubChart.jsx";
 import ResumeLink from "../components/ResumeLink.jsx";
+import TechStack from "../components/TechStack.jsx";
 import "./Home.css";
 
 function Home() {
@@ -23,6 +25,7 @@ function Home() {
         of 286 builds spanning different languages, tools, and problem types, aimed at getting broad hands-on
         exposure and figuring out where to go deeper.
       </p>
+      <TechStack />
       <div className="home-actions">
         <Link className="home-action-primary" to="/projects">
           See my projects
@@ -32,6 +35,7 @@ function Home() {
         </Link>
         <ResumeLink />
       </div>
+      <GithubChart />
     </section>
   );
 }

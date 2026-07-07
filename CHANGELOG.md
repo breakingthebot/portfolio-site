@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-07-07
+### Added
+- Tech-stack badge row on Home (`src/components/TechStack.jsx`), a curated list of languages/tools used across the 286-builds series (`src/content/techStack.js`).
+- GitHub contribution heatmap on Home (`src/components/GithubChart.jsx`), embedded via the free `ghchart.rshah.org` service. Renders on a fixed white card in both themes (the service's "no activity" squares are a fixed light gray with no dark variant) and hides itself entirely if the image fails to load, so a third-party outage never shows a broken-image icon.
+
 ## [1.4.0] - 2026-07-07
 ### Added
 - Project thumbnails on `Projects` cards: a real image shows automatically once dropped into `public/project-thumbnails/{build_number}.jpg` and deployed; otherwise a clean placeholder shows instead of a blank space or broken image icon. `src/services/projectThumbnailService.js` detects a real image the same way `resumeService.js` detects a real resume (checks actual `Content-Type`, not just response status, since a missing file still returns 200 via the SPA rewrite).
