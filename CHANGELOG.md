@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-07-07
+### Changed
+- Filled in the Home page bio paragraph (background, current project, what I'm looking for), based on the `breakingthebot/breakingthebot` profile README.
+- Replaced the placeholder contact email with breakingthebot@gmail.com.
+
 ## [0.4.1] - 2026-07-07
 ### Changed
 - Replaced "Your Name" placeholder with "Breaking the Bot" across the nav, footer, page title, and Home page.

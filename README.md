@@ -30,7 +30,7 @@ None required for the site to run. See `.env.example`:
 Live at [portfolio-site-three-blush-83.vercel.app](https://portfolio-site-three-blush-83.vercel.app). Deployed via `vercel` CLI (not the dashboard) with `vercel.json` set to rewrite every path to `index.html`, so client-side routes like `/projects` work correctly on direct navigation and refresh — GitHub Pages can't do this without extra configuration, which is why this went to Vercel instead. The GitHub repo is connected for automatic redeploys on push to `main`.
 
 ## Architecture Notes
-Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Content is currently placeholder copy (name, bio, email) — swap it in whenever, the structure and routing are real and working.
+Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Name, tagline, bio, and contact email are real content now (sourced from the `breakingthebot/breakingthebot` GitHub profile README).
 
 The Projects page is the one page with real logic: `src/services/buildsService.js` fetches the live `builds.json` from the [286-builds index](https://breakingthebot.github.io/286-builds/) and selects the most recent entries via a pure `selectHighlightedBuilds()` function, kept separate from the fetch call so it can be unit tested without mocking `fetch`. The page also always links out to the full searchable index rather than trying to duplicate its search/filter functionality here.
 
@@ -41,5 +41,5 @@ Contact now has a real form (`src/components/ContactForm.jsx`) submitting to For
 The form also includes a honeypot field (`_gotcha`, Formspree's own convention) — positioned off-screen via CSS rather than `display:none` or `type="hidden"`, since some bots specifically skip fields hidden that way. `isHoneypotTriggered()` checks it client-side before ever calling `submitContactForm()`; a filled honeypot shows the same success message without an actual network request, so bots get no signal their submission was rejected. Formspree also discards any submission with a filled `_gotcha` server-side, as defense-in-depth.
 
 ## Notes
-- All bio/name/email content is placeholder text, clearly marked, ready to swap in.
+- Blog page content is still an intentional empty state (no fake posts).
 - `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.

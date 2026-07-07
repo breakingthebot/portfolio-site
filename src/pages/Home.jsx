@@ -15,8 +15,10 @@ function Home() {
       <h1>Hi, I'm Breaking the Bot.</h1>
       <p className="home-tagline">28 years in operations and automation — now learning AI in public, one build at a time.</p>
       <p className="home-bio">
-        Add your bio here. A couple of sentences about your background, what you're currently working on, and
-        what you're looking for.
+        After 28 years in operations and automation, I started learning AI seriously in April 2025 — and I'm
+        building in public to document the process, not just the results. My main project right now is a series
+        of 286 builds spanning different languages, tools, and problem types, aimed at getting broad hands-on
+        exposure and figuring out where to go deeper.
       </p>
       <div className="home-actions">
         <Link className="home-action-primary" to="/projects">

@@ -10,7 +10,7 @@
 import ContactForm from "../components/ContactForm.jsx";
 import "./Contact.css";
 
-const CONTACT_EMAIL = "your.email@example.com";
+const CONTACT_EMAIL = "breakingthebot@gmail.com";
 
 function Contact() {
   return (
