@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-07
+### Changed
+- Project cards on the Projects page now show technology and category as visually distinct pill tags instead of a single muted "Tech · Category" text line, making the variety across builds easier to scan at a glance.
+
 ## [1.1.1] - 2026-07-07
 ### Fixed
 - Normalized `h1` spacing across pages: `Projects`, `Blog`, and `Contact` previously had no heading CSS at all and fell through to the browser's UA-default margin, which stacked with each page's own container padding for an inconsistent gap above the title. Added a baseline `h1` rule in `global.css`; `Home`'s hero and `NotFound`'s "404" keep their own deliberate overrides.

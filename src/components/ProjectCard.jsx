@@ -15,8 +15,9 @@ function ProjectCard({ build }) {
           {build.project_name}
         </a>
       </h3>
-      <p className="project-card-meta">
-        {build.technology} · {build.category}
+      <p className="project-card-tags">
+        <span className="project-card-tag project-card-tag-tech">{build.technology}</span>
+        <span className="project-card-tag project-card-tag-category">{build.category}</span>
       </p>
       <p className="project-card-description">{build.description}</p>
       <a className="project-card-link" href={build.repo_url} target="_blank" rel="noopener noreferrer">
