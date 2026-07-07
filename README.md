@@ -45,3 +45,4 @@ The form also includes a honeypot field (`_gotcha`, Formspree's own convention) 
 ## Notes
 - Blog page content is still an intentional empty state (no fake posts).
 - `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.
+- The favicon and Open Graph/Twitter share image (`public/favicon.svg`, `public/og-image.svg`) are SVG. Most modern platforms (Discord, Slack, iMessage, Facebook) render SVG `og:image` fine, but some stricter validators (older Twitter Card validator, some LinkedIn crawlers) prefer raster PNG/JPG — worth upgrading to a designed PNG if you hit a platform that shows a blank preview.

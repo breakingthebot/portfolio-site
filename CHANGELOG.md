@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-07
+### Added
+- Favicon (`public/favicon.svg`) and Open Graph/Twitter Card meta tags for proper link previews when shared.
+- `public/og-image.svg` social share card (1200x630).
+
 ## [0.4.3] - 2026-07-07
 ### Fixed
 - Wired up the real Formspree endpoint in production (`VITE_CONTACT_FORM_ENDPOINT` set via `vercel env add`, then redeployed since Vite bakes `VITE_` vars in at build time). The contact form is no longer just built — it's live and verified with a real end-to-end submission.
