@@ -7,6 +7,7 @@
 
 import { Link } from "react-router-dom";
 
+import ResumeLink from "../components/ResumeLink.jsx";
 import "./Home.css";
 
 function Home() {
@@ -27,6 +28,7 @@ function Home() {
         <Link className="home-action-secondary" to="/contact">
           Get in touch
         </Link>
+        <ResumeLink />
       </div>
     </section>
   );

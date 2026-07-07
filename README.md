@@ -43,7 +43,10 @@ Contact now has a real form (`src/components/ContactForm.jsx`) submitting to For
 
 The form also includes a honeypot field (`_gotcha`, Formspree's own convention) — positioned off-screen via CSS rather than `display:none` or `type="hidden"`, since some bots specifically skip fields hidden that way. `isHoneypotTriggered()` checks it client-side before ever calling `submitContactForm()`; a filled honeypot shows the same success message without an actual network request, so bots get no signal their submission was rejected. Formspree also discards any submission with a filled `_gotcha` server-side, as defense-in-depth.
 
+`ResumeLink` (`src/components/ResumeLink.jsx`) shows a "Download Resume" button on Home only once a real `resume.pdf` exists in `public/` — never a dead link. This can't just check `fetch().ok`: `vercel.json` rewrites every unmatched path to `index.html`, so a *missing* `resume.pdf` still returns 200, just with `Content-Type: text/html` instead of `application/pdf`. `isResumeAvailable()` (`src/services/resumeService.js`) checks the actual content type, not just the status code — confirmed the bug existed by testing against a real missing file first (200/text-html), then confirmed the fix with a real file (200/application-pdf), before shipping. To activate the button, drop a real `resume.pdf` into `public/`.
+
 ## Notes
 - Blog page content is still an intentional empty state (no fake posts).
+- No resume is uploaded yet — drop `resume.pdf` into `public/` to activate the Home page download button.
 - `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.
 - The favicon and Open Graph/Twitter share image (`public/favicon.svg`, `public/og-image.svg`) are SVG. Most modern platforms (Discord, Slack, iMessage, Facebook) render SVG `og:image` fine, but some stricter validators (older Twitter Card validator, some LinkedIn crawlers) prefer raster PNG/JPG — worth upgrading to a designed PNG if you hit a platform that shows a blank preview.

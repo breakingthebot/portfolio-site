@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-07-07
+### Added
+- "Download Resume" link on Home (`src/components/ResumeLink.jsx`), shown only once a real `resume.pdf` exists in `public/` — never a dead link.
+- `isResumeAvailable()` (`src/services/resumeService.js`) checks the response's actual `Content-Type`, not just `response.ok`, since `vercel.json`'s catch-all rewrite means a missing file still returns 200 with `text/html`. Regression-tested for this exact case.
+
 ## [0.7.0] - 2026-07-07
 ### Added
 - Vercel Web Analytics (`@vercel/analytics`), enabled via `vercel project web-analytics portfolio-site` and wired into `main.jsx`. Free tier, no cookie banner required.
