@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-07-07
+### Added
+- Project thumbnails on `Projects` cards: a real image shows automatically once dropped into `public/project-thumbnails/{build_number}.jpg` and deployed; otherwise a clean placeholder shows instead of a blank space or broken image icon. `src/services/projectThumbnailService.js` detects a real image the same way `resumeService.js` detects a real resume (checks actual `Content-Type`, not just response status, since a missing file still returns 200 via the SPA rewrite).
+
 ## [1.3.0] - 2026-07-07
 ### Added
 - "BB" avatar monogram (`src/components/Avatar.jsx`) in the Home hero, first step in a "deck this out" visual pass. CSS-driven (not a static image), so it follows the light/dark theme automatically like everything else.

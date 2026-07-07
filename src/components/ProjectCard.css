@@ -8,6 +8,24 @@
   gap: 0.4rem;
 }
 
+.project-card-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-thumbnail-placeholder {
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+}
+
 .project-card h3 {
   margin: 0;
   font-size: 1.05rem;

@@ -5,11 +5,13 @@
  * Created: 2026-07-06
  */
 
+import ProjectThumbnail from "./ProjectThumbnail.jsx";
 import "./ProjectCard.css";
 
 function ProjectCard({ build }) {
   return (
     <article className="project-card">
+      <ProjectThumbnail buildNumber={build.build_number} projectName={build.project_name} />
       <h3>
         <a href={build.repo_url} target="_blank" rel="noopener noreferrer">
           {build.project_name}
