@@ -1,0 +1,30 @@
+.projects-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.projects-intro {
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+.projects-intro a {
+  color: var(--accent);
+}
+
+.projects-status {
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+.projects-status-error {
+  color: #dc2626;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}

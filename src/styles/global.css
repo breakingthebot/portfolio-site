@@ -1,0 +1,53 @@
+/*
+ * src/styles/global.css
+ * CSS reset, theme variables, and base typography shared across all pages.
+ * Connects to: src/main.jsx
+ * Created: 2026-07-06
+ */
+
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --card-bg: #121a2b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #263449;
+    --accent: #60a5fa;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}

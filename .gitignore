@@ -1,0 +1,8 @@
+AGENTS.md
+BUILD_NOTES.md
+node_modules/
+dist/
+.env
+.DS_Store
+*.log
+coverage/

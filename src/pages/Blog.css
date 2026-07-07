@@ -1,0 +1,10 @@
+.blog-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.blog-empty-state {
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}

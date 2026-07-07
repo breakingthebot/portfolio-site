@@ -1,0 +1,48 @@
+.home-hero {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.home-hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-tagline {
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+}
+
+.home-bio {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.home-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.home-action-primary,
+.home-action-secondary {
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.home-action-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.home-action-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+}

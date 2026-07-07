@@ -1,0 +1,37 @@
+# Portfolio Site
+
+Personal portfolio site — home, projects, blog, and contact pages with client-side routing.
+
+## Stack
+- React 19 + React Router 7 (client-side routing)
+- Vite (dev server + build)
+- Vitest (unit tests)
+- Plain CSS (no framework, no CSS-in-JS)
+
+## Setup
+1. Install Node.js 22 or newer.
+2. Clone this repo.
+3. `npm install`
+
+## Environment Variables
+None required for standard defaults. See `.env.example` — `VITE_BUILDS_DATA_URL` can optionally override where the Projects page fetches build data from (defaults to the live 286-builds index).
+
+## Running Locally
+- `npm run dev` — start the dev server (prints a local URL).
+- `npm test` — run the Vitest suite.
+- `npm run build` — production build to `dist/`.
+- `npm run preview` — serve the production build locally.
+
+## Deployed
+Not deployed yet — planned for Vercel (`vercel` for preview, `vercel --prod` for production) in an upcoming iteration, since Vercel handles client-side route fallbacks correctly out of the box.
+
+## Architecture Notes
+Four pages (Home, Projects, Blog, Contact) share one `NavBar`/`Footer` layout via `App.jsx`'s route table. Content is currently placeholder copy (name, bio, email) — swap it in whenever, the structure and routing are real and working.
+
+The Projects page is the one page with real logic: `src/services/buildsService.js` fetches the live `builds.json` from the [286-builds index](https://breakingthebot.github.io/286-builds/) and selects the most recent entries via a pure `selectHighlightedBuilds()` function, kept separate from the fetch call so it can be unit tested without mocking `fetch`. The page also always links out to the full searchable index rather than trying to duplicate its search/filter functionality here.
+
+Blog is an intentional empty state for now — no fake posts. Contact uses a `mailto:` link rather than a form, since there's no backend yet to receive submissions; a real form (e.g. via Formspree) is a natural next iteration.
+
+## Notes
+- All bio/name/email content is placeholder text, clearly marked, ready to swap in.
+- `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.
