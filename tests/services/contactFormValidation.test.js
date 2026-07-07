@@ -7,7 +7,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { validateContactForm } from "../../src/services/contactFormValidation.js";
+import { isHoneypotTriggered, validateContactForm } from "../../src/services/contactFormValidation.js";
 
 const VALID_FIELDS = {
   name: "Ada Lovelace",
@@ -48,5 +48,20 @@ describe("validateContactForm", () => {
   it("trims whitespace before validating", () => {
     const errors = validateContactForm({ name: "  Ada  ", email: "  ada@example.com  ", message: `  ${VALID_FIELDS.message}  ` });
     expect(errors).toEqual({});
+  });
+});
+
+describe("isHoneypotTriggered", () => {
+  it("returns false when the honeypot field is empty or missing", () => {
+    expect(isHoneypotTriggered({ _gotcha: "" })).toBe(false);
+    expect(isHoneypotTriggered({})).toBe(false);
+  });
+
+  it("returns false when the honeypot field is only whitespace", () => {
+    expect(isHoneypotTriggered({ _gotcha: "   " })).toBe(false);
+  });
+
+  it("returns true when the honeypot field has any value", () => {
+    expect(isHoneypotTriggered({ _gotcha: "http://spam.example" })).toBe(true);
   });
 });

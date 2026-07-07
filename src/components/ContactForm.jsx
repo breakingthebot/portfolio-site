@@ -7,11 +7,11 @@
 
 import { useState } from "react";
 
-import { validateContactForm } from "../services/contactFormValidation.js";
+import { isHoneypotTriggered, validateContactForm } from "../services/contactFormValidation.js";
 import { isContactFormConfigured, submitContactForm } from "../services/contactFormService.js";
 import "./ContactForm.css";
 
-const EMPTY_FIELDS = { name: "", email: "", message: "" };
+const EMPTY_FIELDS = { name: "", email: "", message: "", _gotcha: "" };
 
 function ContactForm() {
   const [fields, setFields] = useState(EMPTY_FIELDS);
@@ -42,6 +42,14 @@ function ContactForm() {
       return;
     }
 
+    // A filled honeypot means a bot, not a person -- pretend success without
+    // actually sending anything, so the bot has no signal to adapt its behavior.
+    if (isHoneypotTriggered(fields)) {
+      setStatus("success");
+      setFields(EMPTY_FIELDS);
+      return;
+    }
+
     setStatus("submitting");
 
     try {
@@ -59,6 +67,22 @@ function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
+      {/* Honeypot: hidden from real users via CSS (not type="hidden", which
+          some bots skip on purpose), so only bots that blindly fill every
+          field end up filling this one. Formspree also discards any
+          submission with a filled _gotcha field server-side. */}
+      <label className="contact-form-honeypot" aria-hidden="true">
+        Leave this field empty
+        <input
+          type="text"
+          name="_gotcha"
+          value={fields._gotcha}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </label>
+
       <label className="contact-form-field">
         Name
         <input type="text" name="name" value={fields.name} onChange={handleChange} />

@@ -38,6 +38,8 @@ Blog is an intentional empty state for now — no fake posts.
 
 Contact now has a real form (`src/components/ContactForm.jsx`) submitting to Formspree, with client-side validation split into a pure `validateContactForm()` function (`src/services/contactFormValidation.js`) so field rules are unit-tested without rendering anything. Submission itself lives in `src/services/contactFormService.js`, which also exposes `isContactFormConfigured()` — if `VITE_CONTACT_FORM_ENDPOINT` isn't set, the page shows a clear notice and leans on the `mailto:`/GitHub links instead of rendering a form that would silently fail.
 
+The form also includes a honeypot field (`_gotcha`, Formspree's own convention) — positioned off-screen via CSS rather than `display:none` or `type="hidden"`, since some bots specifically skip fields hidden that way. `isHoneypotTriggered()` checks it client-side before ever calling `submitContactForm()`; a filled honeypot shows the same success message without an actual network request, so bots get no signal their submission was rejected. Formspree also discards any submission with a filled `_gotcha` server-side, as defense-in-depth.
+
 ## Notes
 - All bio/name/email content is placeholder text, clearly marked, ready to swap in.
 - `AGENTS.md` (build standards) is intentionally excluded from version control via `.gitignore`.

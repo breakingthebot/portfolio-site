@@ -39,3 +39,17 @@ export function validateContactForm(fields) {
 
   return errors;
 }
+
+/**
+ * Checks whether the honeypot field was filled in, meaning the submission
+ * almost certainly came from a bot rather than a person (real visitors
+ * never see or fill this field -- it's hidden via CSS, not just
+ * type="hidden", so simple bots that blindly fill every input still
+ * catch it).
+ *
+ * @param {{_gotcha?: string}} fields - The raw field values, including the honeypot.
+ * @returns {boolean} True if the honeypot field has any value.
+ */
+export function isHoneypotTriggered(fields) {
+  return (fields._gotcha || "").trim() !== "";
+}

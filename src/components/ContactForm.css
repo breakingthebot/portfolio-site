@@ -31,6 +31,18 @@
   outline-offset: 1px;
 }
 
+/* Off-screen rather than display:none/visibility:hidden -- some spam bots
+   specifically skip fields hidden that way, since it's a well-known
+   honeypot pattern. Positioning it off-screen keeps it "visible" to naive
+   bots while being fully unreachable and invisible for real users. */
+.contact-form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-form-error {
   color: #dc2626;
   font-size: 0.8rem;
