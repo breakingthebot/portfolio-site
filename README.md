@@ -8,7 +8,7 @@ Personal portfolio site — home, projects, blog, and contact pages with client-
 - React 19 + React Router 7 (client-side routing)
 - Vite (dev server + build)
 - Vitest (unit tests)
-- Plain CSS (no framework, no CSS-in-JS)
+- Plain CSS (no framework, no CSS-in-JS), theming via CSS custom properties
 - Vercel Web Analytics (`@vercel/analytics`) — free tier, no cookie banner needed
 
 ## Setup
@@ -52,6 +52,13 @@ Two real layout bugs, found by screenshotting the live site at mobile width with
 2. **`.nav-bar` and `.site-footer` were shrink-wrapping to content width instead of filling their `max-width: 960px`** — both are direct flex children of `.app-shell` (a column flex container), and `margin: 0 auto` on a flex item suppresses the default `align-items: stretch` behavior, so without an explicit `width: 100%` they sized to content (measured 424px instead of 960px) instead of stretching up to the cap. This made the footer's divider line visibly shorter than the page content above it. Fixed by adding `width: 100%` alongside `max-width` on both.
 
 Also left-aligned the Home bio paragraph (long-form text reads better left-aligned than centered) and added a `max-width: 480px` breakpoint scaling down the H1/tagline font sizes so the hero doesn't dominate small screens.
+
+### Light/dark theme toggle
+The site defaults to the OS `prefers-color-scheme`, but a button in the nav (`ThemeToggle`) lets visitors manually override it. The override is stored in `localStorage` and takes priority over the OS setting on every future visit. All the flip/resolve/persist logic lives in pure functions in `src/services/themeService.js` so it's unit tested against a mock storage object rather than the real browser API.
+
+The tricky part of any manual theme toggle is avoiding a flash of the wrong theme on load: React doesn't mount and run its `useEffect` until after the browser has already painted once. To avoid that flash, `index.html` has a small inline `<script>` (before any React code loads) that reads `localStorage` directly and sets the `data-theme` attribute synchronously, before first paint. `themeService.js`'s `THEME_STORAGE_KEY` and that inline script's storage key must be kept in sync manually since the script runs outside the bundle.
+
+Verified with Playwright screenshots: initial OS-default light render, click-to-dark, and dark-still-applied-after-reload.
 
 ## Notes
 - Blog page content is still an intentional empty state (no fake posts).

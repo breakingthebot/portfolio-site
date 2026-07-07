@@ -24,6 +24,13 @@
   white-space: nowrap;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .nav-links {
   display: flex;
   flex-wrap: wrap;

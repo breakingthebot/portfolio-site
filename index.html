@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Applies a stored theme choice before first paint, so switching
+         pages/reloading never flashes the OS-default theme first if the
+         visitor explicitly picked the other one. "theme" here must match
+         THEME_STORAGE_KEY in src/services/themeService.js. -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        }
+      })();
+    </script>
     <title>Breaking the Bot — Portfolio</title>
     <meta name="description" content="Breaking the Bot's portfolio: projects, blog, and contact." />
 

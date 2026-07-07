@@ -7,6 +7,7 @@
 
 import { NavLink } from "react-router-dom";
 
+import ThemeToggle from "./ThemeToggle.jsx";
 import "./NavBar.css";
 
 const NAV_LINKS = [
@@ -22,21 +23,24 @@ function NavBar() {
       <NavLink to="/" className="nav-brand" end>
         Breaking the Bot
       </NavLink>
-      <nav>
-        <ul className="nav-links">
-          {NAV_LINKS.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                end={link.end}
-                className={({ isActive }) => (isActive ? "nav-link nav-link-active" : "nav-link")}
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className="nav-right">
+        <nav>
+          <ul className="nav-links">
+            {NAV_LINKS.map((link) => (
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  end={link.end}
+                  className={({ isActive }) => (isActive ? "nav-link nav-link-active" : "nav-link")}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <ThemeToggle />
+      </div>
     </header>
   );
 }

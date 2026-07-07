@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-07-07
+### Added
+- Light/dark theme toggle (`src/components/ThemeToggle.jsx`) in the nav, backed by pure logic in `src/services/themeService.js` (flip/resolve/persist), fully unit tested with a mock storage object.
+- Manual choice persists to `localStorage` and overrides the OS `prefers-color-scheme` default. An inline blocking script in `index.html` re-applies any stored choice before React mounts, so there's no flash of the wrong theme on load.
+- Verified with Playwright: initial light render, click-to-dark, and dark-persists-after-reload all screenshot-confirmed correct.
+
 ## [0.9.0] - 2026-07-07
 ### Fixed
 - Nav links now wrap cleanly onto their own line below the brand on narrow screens, instead of the brand text wrapping mid-word and crowding the links.
